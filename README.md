@@ -46,3 +46,7 @@ Add the following GitHub secrets:
 ## ✅ Result
 
 The app will be accessible via a public Cloud Run HTTPS endpoint.
+
+## ✅ ?
+
+Yes.
