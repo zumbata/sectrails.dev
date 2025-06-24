@@ -1,6 +1,7 @@
 {
   "name": "security-trails-fork-by-zumbata",
   "version": "1.0.0",
+  "type": "module",
   "description": "URL monitoring app with global state",
   "main": "index.js",
   "scripts": {

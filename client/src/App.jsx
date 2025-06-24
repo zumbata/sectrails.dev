@@ -10,7 +10,7 @@ import AssociatedDomains from "./components/AssociatedDomains";
 import IpStats from "./components/IpStats";
 
 const App = () => {
-  const [apiKey, setApiKey] = useState("");
+  const [apiKey, setApiKey] = useState(import.meta.env.SECURITYTRAILS_API_KEY || "");
   const [queryValue, setQueryValue] = useState("");
   const [endpoint, setEndpoint] = useState("ip_details");
   const [result, setResult] = useState(null);

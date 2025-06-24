@@ -4,6 +4,8 @@ import express from "express";
 import dotenv from "dotenv";
 import axios from "axios";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
@@ -13,6 +15,18 @@ const API_KEY = process.env.SECURITYTRAILS_API_KEY;
 
 app.use(cors());
 app.use(express.json());
+
+
+// Add these for resolving __dirname with ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve static files from Vite build
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 
 const BASE_URL = "https://api.securitytrails.com/v1";
 

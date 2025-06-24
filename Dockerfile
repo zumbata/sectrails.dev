@@ -5,13 +5,14 @@ WORKDIR /app
 COPY server server
 COPY client client
 
-RUN cd server && npm install
+RUN cd server && npm install 
 RUN cd client && npm install && npm run build
+
 
 WORKDIR /app/server
 ENV NODE_ENV=production
-ARG SECURITYTRAILS_API_KEY
 ENV SECURITYTRAILS_API_KEY=$SECURITYTRAILS_API_KEY
+ENV PORT=$PORT
 
 EXPOSE 4000
 CMD [ "node", "index.js" ]

@@ -32,3 +32,4 @@ jobs:
             --region ${{ secrets.GCLOUD_REGION }} \
             --allow-unauthenticated \
             --set-env-vars SECURITYTRAILS_API_KEY=${{ secrets.SECURITYTRAILS_API_KEY }}
+            --set-env-vars PORT=4000
