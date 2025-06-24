@@ -8,12 +8,18 @@ import Subdomains from "./components/Subdomains";
 import WhoisHistory from "./components/WhoisHistory";
 import AssociatedDomains from "./components/AssociatedDomains";
 import IpStats from "./components/IpStats";
+import QueryButton from "./components/QueryButton";
 
 const App = () => {
   const [apiKey, setApiKey] = useState(import.meta.env.SECURITYTRAILS_API_KEY || "");
   const [queryValue, setQueryValue] = useState("");
   const [endpoint, setEndpoint] = useState("ip_details");
   const [result, setResult] = useState(null);
+
+  const handleRunQuery = () => {
+    if (!apiKey || !queryValue || !endpoint) return;
+    setResult(null); // Clear previous result
+  };
 
   const renderComponent = () => {
     const props = { apiKey, queryValue, setResult };
@@ -39,6 +45,7 @@ const App = () => {
       <ApiKeyInput apiKey={apiKey} setApiKey={setApiKey} />
       <DomainInput queryValue={queryValue} setQueryValue={setQueryValue} />
       <EndpointSelector endpoint={endpoint} setEndpoint={setEndpoint} />
+      <QueryButton onClick={handleRunQuery} />
       <div className="mt-6">{renderComponent()}</div>
     </div>
   );
